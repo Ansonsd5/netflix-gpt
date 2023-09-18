@@ -2,11 +2,25 @@
 
 - Create react app
 - Tailwind integration
+- Components
+    - Header
+    - Login 
+        - SignIn SignUp
+            - Form validation
+                - useRef
+
+    - Firebase setUp
+        - deployed the project using firebase cli
+    - Creating a user            
+    - Body
+        - Routing
+    
 
 #Features 
 - Login / Sign Up
     -   Sign In / Sign Up  up form
     -   redirect to Browse  
+   
 
 
 - Browse( After auth)
