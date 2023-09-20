@@ -15,6 +15,9 @@
     - Body
         - Routing
     
+    - Setup Redux store with user Slice
+        - userSlice and provided the store
+    
 
 #Features 
 - Login / Sign Up
