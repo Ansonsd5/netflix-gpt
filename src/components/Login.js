@@ -3,7 +3,7 @@ import Header from "./Header";
 import { Form, useNavigate } from "react-router-dom";
 import { checkValidData } from "../utils/validation";
 import { auth } from "../utils/firebase"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -45,7 +45,14 @@ const Login = () => {
         // Signed in 
         const user = userCredential.user;
         console.log("Signed In sucessfully");
-        navigate("/browse");
+        updateProfile(user, {
+          displayName: name.current.value 
+        }).then(() => {
+          navigate("/browse");
+        }).catch((error) => {
+         console.log("failed to update userprofile");
+        });
+        
       })
       .catch((error) => {
         const errorCode = error.code;
