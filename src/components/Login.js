@@ -2,12 +2,16 @@ import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { Form, useNavigate } from "react-router-dom";
 import { checkValidData } from "../utils/validation";
-import { auth } from "../utils/firebase"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
-  const [errorMessage, setErrorMessage ] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
   const email = useRef(null);
@@ -23,46 +27,46 @@ const Login = () => {
     const message = checkValidData(userEnteredEmail, userEnteredPassword);
     setErrorMessage(message);
 
-    if(message) return;
+    if (message) return;
 
-    if(!isSignInForm){
-      createUserWithEmailAndPassword(auth, userEnteredEmail, userEnteredPassword)
-  .then((userCredential) => {
-    // Signed Up 
-    const user = userCredential.user;
-    console.log("Signed  Up sucessfully");
-    navigate("/browse");
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-   setErrorMessage(errorCode+ " - "+ errorMessage)
-  });
-
-    }else{
-      signInWithEmailAndPassword(auth,userEnteredEmail, userEnteredPassword)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        console.log("Signed In sucessfully");
-        updateProfile(user, {
-          displayName: name.current.value 
-        }).then(() => {
-          navigate("/browse");
-        }).catch((error) => {
-         console.log("failed to update userprofile");
+    if (!isSignInForm) {
+      createUserWithEmailAndPassword(
+        auth,
+        userEnteredEmail,
+        userEnteredPassword
+      )
+        .then((userCredential) => {
+          // Signed Up
+          const user = userCredential.user;
+          console.log("Signed  Up sucessfully");
+          updateProfile(user, {
+            displayName: name.current.value,
+          })
+            .then(() => {
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
         });
-        
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrorMessage(errorCode+ " - "+ errorMessage)
-      });
+    } else {
+      signInWithEmailAndPassword(auth, userEnteredEmail, userEnteredPassword)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("Signed In sucessfully");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
     }
-
-    
-
   };
   return (
     <div>
@@ -77,9 +81,7 @@ const Login = () => {
           </h4>
           {!isSignInForm && (
             <div className="mb-4">
-              <label
-                className="block text-white text-sm font-bold mb-2"
-              >
+              <label className="block text-white text-sm font-bold mb-2">
                 Name
               </label>
               <input
@@ -92,9 +94,7 @@ const Login = () => {
             </div>
           )}
           <div className="mb-4">
-            <label
-              className="block text-white text-sm font-bold mb-2"
-            >
+            <label className="block text-white text-sm font-bold mb-2">
               Email
             </label>
             <input
