@@ -7,8 +7,6 @@ import { useSelector } from "react-redux";
 const Header = () => {
 
   const user = useSelector(store => store.user);
-
-  console.log(user,"user");
 const navigate = useNavigate();
   const avatarClick = () => {
     
