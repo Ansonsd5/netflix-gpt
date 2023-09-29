@@ -29,7 +29,7 @@ const navigate = useNavigate();
       {user && <div className="flex items-center gap-4">
       <button onClick={() =>  avatarClick() }>
       <img className="w-8 h-8 rounded-xl bg-clip-border" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png?20201013161117" alt="icon"/></button>
-      <button onClick={()=> handleSignOut()} className="font-bold bg-red-600 px-4 py-1 rounded-sm">Sign Out</button>
+      <button onClick={()=> handleSignOut()} className="font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner">Sign Out</button>
       </div>}
     </div>
   );
