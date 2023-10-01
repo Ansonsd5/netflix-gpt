@@ -4,6 +4,8 @@
 - Tailwind integration
 - Components
     - Header
+        - onauthStateChange is keept here
+        - unsubscribe is used
     - Login 
         - SignIn SignUp
             - Form validation
@@ -21,7 +23,9 @@
 
 #Features 
 - Login / Sign Up
-    -   Sign In / Sign Up  up form
+    -   Sign In / Sign Up  up 
+        - Identified the bux within the development and 
+        fixed with optimal solution
     -   redirect to Browse  
    
 
@@ -33,6 +37,10 @@
         - Title and Discription
         - MovieSuggestions 
             - Movie list * N
+-TMDB
+    - created application 
+    - Got the barear tokens and api key
+    - able to make api call and get the now palying movies data
 
 - NetFlix GPT 
      -  Search Bar 
