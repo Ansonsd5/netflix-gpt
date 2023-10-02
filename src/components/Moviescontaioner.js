@@ -13,11 +13,10 @@ const Moviescontaioner = () => {
     const { original_title , overview , id} = mainMovie;
     
   return (
-    <div className='absolute top-0 z-0'>
-        <VideoBackground movieId = {id} />
-        <div className='absolute top-0'>
+    <div className='relative '>
+        <VideoBackground movieId = {id}  />
         <VideoTitle movieTitle = {original_title} movieDiscription = {overview}/>
-        </div>
+      
     </div>
   )
 }

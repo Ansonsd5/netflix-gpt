@@ -73,7 +73,7 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="w-full max-w-xs mx-auto">
+      <div className="w-full max-w-xs absolute top-2/4 left-2/4 transform -translate-x-1/2 -translate-y-1/2">
         <form
           className="bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-opacity-80"
           onSubmit={(e) => e.preventDefault()}
