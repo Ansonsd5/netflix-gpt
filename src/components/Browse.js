@@ -7,7 +7,6 @@ import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpComingMovies from "../hooks/useUpComing";
 
-
 const Browse = () => {
   useNowPlayingMovies();
   usePopularMovies();
@@ -16,14 +15,11 @@ const Browse = () => {
   return (
     <div>
       <Header />
-      
+
       <Moviescontaioner />
 
-      
       <Secondary />
-      </div>
-      
-   
+    </div>
   );
 };
 
