@@ -40,7 +40,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed Up
           const user = userCredential.user;
-          console.log("Signed  Up sucessfully");
           updateProfile(user, {
             displayName: name.current.value,
           })
@@ -62,7 +61,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("Signed In sucessfully now");
          
         })
         .catch((error) => {

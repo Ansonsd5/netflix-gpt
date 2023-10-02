@@ -41,8 +41,12 @@
     - created application 
     - Got the barear tokens and api key
     - able to make api call and get the now palying movies data
+    -Implementation
+        -Fetch data from TMDB and able to get the trailer video on browse screen
+        -Implemented seperate useMoblieTrailer hook to increase readability and reusability
 
 - NetFlix GPT 
      -  Search Bar 
      - Movie Suggestion
+
      

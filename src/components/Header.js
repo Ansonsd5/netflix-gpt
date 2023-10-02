@@ -44,12 +44,12 @@ const Header = () => {
   },[]);
 
   return (
-    <div className=" px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center">
-      <img className="w-44"
+    <div className=" px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center z-30">
+      <img className="w-44 z-30"
         src={LOGO}
         alt="netflix-icon"
       />
-      {user && <div className="flex items-center gap-4">
+      {user && <div className="flex items-center gap-4 z-20">
       <button onClick={() =>  avatarClick() }>
       <img className="w-8 h-8 rounded-xl bg-clip-border" src={PROFILE_AVATAR} alt="icon"/></button>
       <button onClick={ handleSignOut} className="font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner">Sign Out</button>
