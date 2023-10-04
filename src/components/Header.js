@@ -12,7 +12,9 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
 
-  const avatarClick = () => {};
+  const avatarClick = () => {
+    useDispatch()
+  };
 
   const handleSignOut = () => {
     signOut(auth)
@@ -38,11 +40,16 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleGptSearch = () => {
+    
+  }
+
   return (
     <div className="w-screen  bg-gradient-to-b from-black  z-30 absolute flex justify-between pr-10">
       <img className="w-44 z-30" src={LOGO} alt="netflix-icon" />
       {user && (
         <div className="flex items-center gap-4 z-20">
+          <button className="font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner" onClick={handleGptSearch}>GPT search</button>
           <button onClick={() => avatarClick()}>
             <img
               className="w-8 h-8 rounded-xl bg-clip-border"

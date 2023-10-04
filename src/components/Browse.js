@@ -6,12 +6,16 @@ import Secondary from "./Secondary";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpComingMovies from "../hooks/useUpComing";
+import {useSelector } from 'react-redux';
 
 const Browse = () => {
+
+  const showGptSearch = useSelector((store)=>store.gpt.showGptSearch)
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
   useUpComingMovies();
+
   return (
     <div>
       <Header />
