@@ -5,16 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO, PROFILE_AVATAR } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { LOGO, PROFILE_AVATAR, SUPPORTED_LANGUAGES } from "../utils/constants";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
-  const avatarClick = () => {
-    useDispatch()
-  };
+  const avatarClick = () => {};
 
   const handleSignOut = () => {
     signOut(auth)
@@ -23,6 +24,8 @@ const Header = () => {
         navigate("/error");
       });
   };
+
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -41,7 +44,12 @@ const Header = () => {
   }, []);
 
   const handleGptSearch = () => {
-    
+    dispatch(toggleGptSearchView());
+  };
+
+    const handleSelectOption = (e) =>{
+    dispatch(changeLanguage(e.target.value))
+   
   }
 
   return (
@@ -49,7 +57,27 @@ const Header = () => {
       <img className="w-44 z-30" src={LOGO} alt="netflix-icon" />
       {user && (
         <div className="flex items-center gap-4 z-20">
-          <button className="font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner" onClick={handleGptSearch}>GPT search</button>
+          {/* !showGptSearch && */}
+          {showGptSearch &&
+          <select className=" font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner" onChange={handleSelectOption}>
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <option
+                className="border-r-0 bg-black text-white"
+                key={lang.identifier}
+                value={lang.identifier}
+              >
+                {lang.name}
+              </option>
+            ))}
+          </select>}
+          {
+            <button
+              className="font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner"
+              onClick={handleGptSearch}
+            >
+             {showGptSearch ? 'Home': "Gpt search"}
+            </button>
+          }
           <button onClick={() => avatarClick()}>
             <img
               className="w-8 h-8 rounded-xl bg-clip-border"

@@ -7,10 +7,11 @@ import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpComingMovies from "../hooks/useUpComing";
 import {useSelector } from 'react-redux';
+import MovieSearch from "./MovieSearch";
 
 const Browse = () => {
 
-  const showGptSearch = useSelector((store)=>store.gpt.showGptSearch)
+  const showGptSearch = useSelector((store)=>store.gpt.showGptSearch);
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -19,10 +20,16 @@ const Browse = () => {
   return (
     <div>
       <Header />
+      {
+        showGptSearch ? <MovieSearch/> :
+      
+<>
 
       <Moviescontaioner />
 
       <Secondary />
+      </>
+    }
     </div>
   );
 };
