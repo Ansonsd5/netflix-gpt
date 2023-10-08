@@ -2,6 +2,7 @@ import React from "react";
 import { CARD_IMAGE_URL } from "../utils/constants";
 
 const MovieCard = ({ cardImg }) => {
+  if(!cardImg ) return null;
   return (
     <div className="px-4">
       <img

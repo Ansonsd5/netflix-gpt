@@ -9,7 +9,7 @@ export const API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YmJlYzQzYjMyNWIxMjJiZDcwMDdlYzgxMTQzNzE0ZCIsInN1YiI6IjY1MTkyMzY1OWI4NjE2MDBjNWNiNzU1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wKsuwcwJCCvbtNfot4OyDGB_M-b7gpoYxs4HMYQgOzE",
+      "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
@@ -20,3 +20,13 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "greek", name: "Greek" },
 ];
+
+
+export const GPT_KEY = process.env.REACT_APP_GPT_KEY;
+
+export  const GPT_PROMPT_TEXT = {
+  firstpart : "Act as a movie recommendation system and suggest some movies as per the query : ",
+  secondpart :"Only give  5 movie comma seperated like the example given ahead. example result:sunaona sum, hero of the class, titanic, kgf, best of all people. movies movie film movie."
+}
+
+// if incase user as for specific number of movies then give them as per example
