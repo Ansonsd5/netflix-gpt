@@ -45,6 +45,7 @@ const Header = () => {
 
   const handleGptSearch = () => {
     dispatch(toggleGptSearchView());
+    
   };
 
     const handleSelectOption = (e) =>{
@@ -53,13 +54,13 @@ const Header = () => {
   }
 
   return (
-    <div className="w-screen  bg-gradient-to-b from-black  z-30 absolute flex justify-between pr-10">
+    <div className="w-screen  bg-gradient-to-b from-black  z-30 absolute grid grid-cols-[max-content,1fr]  pr-4">
       <img className="w-44 z-30" src={LOGO} alt="netflix-icon" />
       {user && (
-        <div className="flex items-center gap-4 z-20">
+        <div className="flex items-center gap-4 z-20 py-2 pr-6 justify-end">
           {/* !showGptSearch && */}
           {showGptSearch &&
-          <select className=" font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner" onChange={handleSelectOption}>
+          <select className="font-bold bg-red-400 md:px-4 py-1 rounded-sm shadow-inner text-xs px-2" onChange={handleSelectOption}>
             {SUPPORTED_LANGUAGES.map((lang) => (
               <option
                 className="border-r-0 bg-black text-white"
@@ -72,22 +73,24 @@ const Header = () => {
           </select>}
           {
             <button
-              className="font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner"
+              className="font-bold bg-red-400 md:px-4 py-1 rounded-sm shadow-inner text-xs px-2 "
               onClick={handleGptSearch}
             >
              {showGptSearch ? 'Home': "Gpt search"}
             </button>
           }
-          <button onClick={() => avatarClick()}>
+          {/* <button onClick={() => avatarClick()} >
             <img
               className="w-8 h-8 rounded-xl bg-clip-border"
               src={PROFILE_AVATAR}
               alt="icon"
             />
-          </button>
+          </button> */}
+
+          <div className="w-16 h-16 relative bg-gradient-to-br from-crimson to-orange  -transform-135"></div>
           <button
             onClick={handleSignOut}
-            className="font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner"
+            className="font-bold bg-red-400 md:px-4 py-1 rounded-sm shadow-inner text-xs px-2 "
           >
             Sign Out
           </button>

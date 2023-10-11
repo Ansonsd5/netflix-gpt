@@ -7,7 +7,7 @@ const Secondary = () => {
 
   return (
     <div className='py-2 bg-black'>
-      <div className='-mt-72 relative z-40'>
+      <div className=' relative z-40 mt-10'>
       <MovieList title = {"Now playing movies"}  movies= {movieData?.nowPlayingMovies} />
       <MovieList title = {"Top Rated Movies"}  movies= {movieData?.topRatedMovies} />
       <MovieList title = {"Popular movies"}  movies= {movieData?.popularMovies} />
