@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validation";
 import { auth } from "../utils/firebase";
+import {GUEST_USER, GUEST_PASS} from "../utils/constants";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -70,6 +71,11 @@ const Login = () => {
         });
     }
   };
+  const handleGuestLogin = () =>{
+    signInWithEmailAndPassword(auth,GUEST_USER,GUEST_PASS).then((userCredential) => {
+      const user = userCredential.user;
+    })
+  }
   return (
     <div>
       <Header />
@@ -128,6 +134,7 @@ const Login = () => {
               {isSignInForm ? "Sign In" : "Sign Up"}
             </button>
           </div>
+          <button className="mx-auto flex justify-center text-red-500 text-sm py-4 cursor-pointer " onClick={() => handleGuestLogin()}>Guest login</button>
           <div className="text-gray-400 mt-16" onClick={handleSignupSignIn}>
             {!isSignInForm
               ? "Already Registered  Netflix User?"

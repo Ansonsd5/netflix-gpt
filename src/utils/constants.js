@@ -29,4 +29,8 @@ export  const GPT_PROMPT_TEXT = {
   secondpart :"Only give  5 movie comma seperated like the example given ahead. example result:sunaona sum, hero of the class, titanic, kgf, best of all people. movies movie film movie."
 }
 
+
+export const GUEST_USER = process.env.REACT_APP_GUEST_USER;
+export const GUEST_PASS = process.env.REACT_APP_GUEST_PASSWORD;
+
 // if incase user as for specific number of movies then give them as per example
