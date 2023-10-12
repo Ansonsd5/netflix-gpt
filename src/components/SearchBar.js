@@ -76,7 +76,7 @@ const SearchBar = () => {
           ref={searchRef}
         ></input>
         <button
-          className="col-span-4 m-4  font-bold bg-red-400 px-4 py-1 rounded-sm shadow-inner"
+          className="text-sm col-span-4 m-4  font-bold bg-red-400 px-2 py-1 rounded-sm shadow-inner "
           onClick={handleGptSearch}
         >
           {language[languageKey].search}

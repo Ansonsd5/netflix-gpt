@@ -25,8 +25,6 @@ const Header = () => {
       });
   };
 
-
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -45,38 +43,41 @@ const Header = () => {
 
   const handleGptSearch = () => {
     dispatch(toggleGptSearchView());
-    
   };
 
-    const handleSelectOption = (e) =>{
-    dispatch(changeLanguage(e.target.value))
-   
-  }
+  const handleSelectOption = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
 
   return (
-    <div className="w-screen  bg-gradient-to-b from-black  z-30 absolute grid grid-cols-[max-content,1fr]  pr-4">
-      <img className="w-44 z-30" src={LOGO} alt="netflix-icon" />
+    <div className=" bg-black  items-center  z-30 absolute  pr-4 grid grid-flow-col-dense w-screen">
+      <div className="">
+        <img className="w-36 z-30" src={LOGO} alt="netflix-icon" />
+      </div>
       {user && (
-        <div className="flex items-center gap-4 z-20 py-2 pr-6 justify-end">
-          {/* !showGptSearch && */}
-          {showGptSearch &&
-          <select className="font-bold bg-red-400 md:px-4 py-1 rounded-sm shadow-inner text-xs px-2" onChange={handleSelectOption}>
-            {SUPPORTED_LANGUAGES.map((lang) => (
-              <option
-                className="border-r-0 bg-black text-white"
-                key={lang.identifier}
-                value={lang.identifier}
-              >
-                {lang.name}
-              </option>
-            ))}
-          </select>}
+        <div className="flex items-center gap-2 z-20 py-2 pr-1 justify-end">
+          {showGptSearch && (
+            <select
+              className="font-bold bg-red-400 md:px-4 py-1 rounded-sm shadow-inner text-xs px-2"
+              onChange={handleSelectOption}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option
+                  className="border-r-0 bg-black text-white"
+                  key={lang.identifier}
+                  value={lang.identifier}
+                >
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
           {
             <button
               className="font-bold bg-red-400 md:px-4 py-1 rounded-sm shadow-inner text-xs px-2 "
               onClick={handleGptSearch}
             >
-             {showGptSearch ? 'Home': "Gpt search"}
+              {showGptSearch ? "Home" : "Gpt search"}
             </button>
           }
           {/* <button onClick={() => avatarClick()} >
@@ -87,7 +88,7 @@ const Header = () => {
             />
           </button> */}
 
-          <div className="w-16 h-16 relative bg-gradient-to-br from-crimson to-orange  -transform-135"></div>
+          {/* <div className="w-16 h-16 relative bg-gradient-to-br from-crimson to-orange  -transform-135"></div> */}
           <button
             onClick={handleSignOut}
             className="font-bold bg-red-400 md:px-4 py-1 rounded-sm shadow-inner text-xs px-2 "
