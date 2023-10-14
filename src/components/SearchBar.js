@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { language } from "../utils/languageConstants";
 import openai from "../utils/openAi";
@@ -22,12 +22,14 @@ const SearchBar = () => {
         "&include_adult=false&language=en-US&page=1",
       API_OPTIONS
     );
-    setLoader(false);
+    
     const movieData = await tmdbResponse.json();
 
     return movieData.results;
    
   };
+
+  
 
   const handleGptSearch = async () => {
     setLoader(!loader);
@@ -35,6 +37,7 @@ const SearchBar = () => {
     const customGptQuery =
       GPT_PROMPT_TEXT.firstpart + searchText + GPT_PROMPT_TEXT.secondpart;
     await makeApiCall(customGptQuery);
+   setLoader(false);
   };
 
   const makeApiCall = async (customGptQuery) => {
