@@ -1,11 +1,14 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { language } from "../utils/languageConstants";
 import openai from "../utils/openAi";
 import { API_OPTIONS, GPT_PROMPT_TEXT } from "../utils/constants";
 import { addGptsuggestedMovies } from "../utils/gptSlice";
+import Loader from "./Loader";
 
 const SearchBar = () => {
+
+  const [ loader , setLoader] = useState(false);
   const dispatch = useDispatch();
   const languageKey = useSelector((store) => store.config.lang);
   const searchRef = useRef(null);
@@ -19,12 +22,15 @@ const SearchBar = () => {
         "&include_adult=false&language=en-US&page=1",
       API_OPTIONS
     );
+    setLoader(false);
     const movieData = await tmdbResponse.json();
 
     return movieData.results;
+   
   };
 
   const handleGptSearch = async () => {
+    setLoader(!loader);
     const searchText = searchRef.current.value;
     const customGptQuery =
       GPT_PROMPT_TEXT.firstpart + searchText + GPT_PROMPT_TEXT.secondpart;
@@ -48,12 +54,14 @@ const SearchBar = () => {
       const suggestedAllMoviesArray = await Promise.all(
         suggestedAllMoviesPromiseArray
       );
+      
       dispatch(
         addGptsuggestedMovies({
           movieNames: clean_GptRecommondedMovie,
           movieResult: suggestedAllMoviesArray,
         })
       );
+     
     } catch (error) {
       if (error.response && error.response.status === 429) {
         setTimeout(() => makeApiCall(customGptQuery), rateLimitDelay);
@@ -63,7 +71,9 @@ const SearchBar = () => {
     }
   };
 
-  return (
+
+
+  return (<>
     <div className="pt-[35%] md:pt-[10%] flex justify-center">
       <form
         className="w-full md:w-1/2 bg-[#d9232e24] grid grid-cols-12 rounded-md px-4"
@@ -83,6 +93,8 @@ const SearchBar = () => {
         </button>
       </form>
     </div>
+    {loader && <Loader /> }
+    </>
   );
 };
 
