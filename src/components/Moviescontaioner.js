@@ -12,7 +12,7 @@ const Moviescontaioner = () => {
   const { original_title, overview, id } = mainMovie;
 
   return (
-    <div className="relative ">
+    <div className="relative web">
       <VideoBackground movieId={id} />
       <VideoTitle movieTitle={original_title} movieDiscription={overview} />
     </div>
