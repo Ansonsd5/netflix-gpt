@@ -1,4 +1,4 @@
-#NetFlix GPT
+#MINIFLIX GPT
 
 - Create react app
 - Tailwind integration
