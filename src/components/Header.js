@@ -50,9 +50,9 @@ const Header = () => {
   };
 
   return (
-    <div className=" bg-black  items-center  z-30 absolute  pr-4 grid grid-flow-col-dense w-screen">
+    <div className=" bg-gradient-to-b from-black  items-center  z-30 absolute  pr-3 grid grid-flow-col-dense w-screen py-4">
       <div className="">
-        <img className="w-36 z-30" src={LOGO} alt="netflix-icon" />
+        <img className="w-36 z-30 h-7" src={LOGO} alt="netflix-icon" />
       </div>
       {user && (
         <div className="flex items-center gap-2 z-20 py-2 pr-1 justify-end">
